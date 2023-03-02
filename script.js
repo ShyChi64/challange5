@@ -8,22 +8,32 @@ let hour = document.querySelectorAll('.hour');
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+function getChildByInstanceOf(parentId,elementType) {
+  var parent = document.getElementById(parentId);
+  for (var i =0 ; i < parent.children.length;i++) {
+      var child = parent.children[i];
+      if (child instanceof elementType) {
+        return child;
+      }
+  }
+  return null;
+}
+
 $(function () {
   var hourNine = document.getElementById('hour-9'); 
   var hourTen = document.getElementById('hour-10'); 
   var hourEleven = document.getElementById('hour-11'); 
 
-var hourNineChildren = hourNine.children; 
-for (var i = 0; i < hourNineChildren.length; i++) { 
-  var childNine = hourNineChildren[i]; 
-  if (childNine instanceof HTMLButtonElement) {
-    childNine.addEventListener('click', function() {
-      console.log("button nine was clicked!")
-    })
-  }
+  var childButtonNine = getChildByInstanceOf("hour-9",HTMLButtonElement);
+  childButtonNine.addEventListener("click",function() {
+     textAreaNine = getChildByInstanceOf("hour-9",HTMLTextAreaElement);
+     console.log("Button Nine clicked!") 
+     localStorage.setItem("hour-9", textAreaNine.value); 
+     localStorage.getItem("hour-9"); 
+  });
 }
 
-}); 
+); 
 
 //var hourTenChildren = hourTen.children; 
 //for (var i = 0; i < hourTenChildren.length; i++ { 
