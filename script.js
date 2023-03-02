@@ -1,7 +1,42 @@
+var timeElement = document.querySelector('.time'); 
+var dateElement = document.querySelector('.dates'); 
+
+let hour = document.querySelectorAll('.hour'); 
+
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  var hourNine = document.getElementById('hour-9'); 
+  var hourTen = document.getElementById('hour-10'); 
+  var hourEleven = document.getElementById('hour-11'); 
+
+var hourNineChildren = hourNine.children; 
+for (var i = 0; i < hourNineChildren.length; i++) { 
+  var childNine = hourNineChildren[i]; 
+  if (childNine instanceof HTMLButtonElement) {
+    childNine.addEventListener('click', function() {
+      console.log("button nine was clicked!")
+    })
+  }
+}
+
+}); 
+
+//var hourTenChildren = hourTen.children; 
+//for (var i = 0; i < hourTenChildren.length; i++ { 
+ // var childTen = hourTenChildren[i]; 
+
+//}) 
+
+//var hourElevenChildren = hourEleven.children; 
+//for (var i = 0; i < hourElevenChildren.length; i++ { 
+  //var childEleven = hourElevenChildren[i]; 
+
+//})
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -20,4 +55,5 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
+  
